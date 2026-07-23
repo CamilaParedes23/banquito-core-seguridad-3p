@@ -1,0 +1,53 @@
+syntax = "proto3";
+
+package banquito.identity.v1;
+
+option java_multiple_files = true;
+option java_package = "com.banquito.platform.identity.infrastructure.grpc.generated";
+option java_outer_classname = "IdentityServiceProto";
+
+service IdentityService {
+  rpc IntrospectToken (TokenIntrospectionGrpcRequest) returns (TokenIntrospectionGrpcResponse);
+  rpc AuthorizeScope (AuthorizeScopeGrpcRequest) returns (AuthorizeScopeGrpcResponse);
+  rpc ValidateServiceClient (ValidateServiceClientGrpcRequest) returns (ValidateServiceClientGrpcResponse);
+}
+
+message TokenIntrospectionGrpcRequest {
+  string token = 1;
+  string required_scope = 2;
+}
+
+message TokenIntrospectionGrpcResponse {
+  bool active = 1;
+  string subject = 2;
+  string actor_type = 3;
+  string username = 4;
+  string client_id = 5;
+  repeated string roles = 6;
+  repeated string scopes = 7;
+  int64 expires_at_epoch_seconds = 8;
+}
+
+message AuthorizeScopeGrpcRequest {
+  string token = 1;
+  string required_scope = 2;
+}
+
+message AuthorizeScopeGrpcResponse {
+  bool authorized = 1;
+  string subject = 2;
+  string reason = 3;
+}
+
+message ValidateServiceClientGrpcRequest {
+  string client_id = 1;
+  string client_secret = 2;
+  string required_scope = 3;
+}
+
+message ValidateServiceClientGrpcResponse {
+  bool valid = 1;
+  string client_id = 2;
+  repeated string scopes = 3;
+  string reason = 4;
+}
