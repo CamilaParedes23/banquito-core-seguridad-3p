@@ -1,44 +1,44 @@
 server:
-  port: ${SERVER_PORT:8081}
+  port: ${SERVER_PORT}
 
 spring:
   datasource:
-    url: ${IDENTITY_DB_URL:${DB_URL:jdbc:mysql://mysql-identity:3306/banquito_identity_access_db?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=America/Guayaquil}}
-    username: ${IDENTITY_DB_USER:${DB_USERNAME:root}}
-    password: ${IDENTITY_DB_PASSWORD:${DB_PASSWORD:${MYSQL_ROOT_PASSWORD:BanQuitoRoot2026!}}}
+    url: ${IDENTITY_DB_URL}
+    username: ${IDENTITY_DB_USER}
+    password: ${IDENTITY_DB_PASSWORD}
   jpa:
     hibernate:
-      ddl-auto: ${JPA_DDL_AUTO:validate}
+      ddl-auto: ${JPA_DDL_AUTO}
       naming:
         physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
         implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyJpaCompliantImpl
   flyway:
-    enabled: ${FLYWAY_ENABLED:true}
-    baseline-on-migrate: ${FLYWAY_BASELINE_ON_MIGRATE:true}
-    baseline-version: ${FLYWAY_BASELINE_VERSION:1}
+    enabled: ${FLYWAY_ENABLED}
+    baseline-on-migrate: ${FLYWAY_BASELINE_ON_MIGRATE}
+    baseline-version: ${FLYWAY_BASELINE_VERSION}
 
 banquito:
   security:
     jwt:
-      issuer: ${JWT_ISSUER:banquito-identity-access}
-      secret: ${JWT_SECRET:BanQuitoIdentityJwtSecretKeyForDevelopmentOnlyChangeMe2026}
-      access-token-minutes: ${ACCESS_TOKEN_MINUTES:15}
-      refresh-token-days: ${REFRESH_TOKEN_DAYS:7}
+      issuer: ${JWT_ISSUER}
+      secret: ${JWT_SECRET}
+      access-token-minutes: ${ACCESS_TOKEN_MINUTES}
+      refresh-token-days: ${REFRESH_TOKEN_DAYS}
   demo:
-    enabled: ${DEMO_DATA_ENABLED:true}
-    password: ${DEMO_PASSWORD:password}
+    enabled: ${DEMO_DATA_ENABLED}
+    password: ${DEMO_PASSWORD}
   onboarding:
-    customer-activation-base-url: ${BANQUITO_CUSTOMER_ACTIVATION_BASE_URL:http://localhost:5174/activar}
+    customer-activation-base-url: ${BANQUITO_CUSTOMER_ACTIVATION_BASE_URL}
   integrations:
     admin:
-      base-url: ${ADMIN_SERVICE_BASE_URL:http://core-admin-service:8083}
+      base-url: ${ADMIN_SERVICE_BASE_URL}
     notification:
-      base-url: ${NOTIFICATION_SERVICE_BASE_URL:http://notification-service:8087}
+      base-url: ${NOTIFICATION_SERVICE_BASE_URL}
   internal:
-    service-key: ${INTERNAL_SERVICE_KEY:banquito-internal-development-key}
+    service-key: ${INTERNAL_SERVICE_KEY}
   integration:
     outbox:
-      enabled: ${IDENTITY_OUTBOX_ENABLED:true}
-      batch-size: ${IDENTITY_OUTBOX_BATCH_SIZE:20}
-      max-attempts: ${IDENTITY_OUTBOX_MAX_ATTEMPTS:5}
-      fixed-delay-ms: ${IDENTITY_OUTBOX_FIXED_DELAY_MS:5000}
+      enabled: ${IDENTITY_OUTBOX_ENABLED}
+      batch-size: ${IDENTITY_OUTBOX_BATCH_SIZE}
+      max-attempts: ${IDENTITY_OUTBOX_MAX_ATTEMPTS}
+      fixed-delay-ms: ${IDENTITY_OUTBOX_FIXED_DELAY_MS}
