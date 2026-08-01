@@ -93,7 +93,7 @@ docker run --rm -p 8081:8081 --env-file .env.example banquito/identity-access-se
 Para Docker Compose/cloud se recomienda usar `SPRING_PROFILES_ACTIVE=docker` y `IDENTITY_DB_URL` apuntando al nombre interno del contenedor MySQL, por ejemplo:
 
 ```text
-jdbc:mysql://mysql-identity:3306/banquito_identity_access_db?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=America/Guayaquil
+jdbc:mysql://mysql-identity:3306/core_identidad_db?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=America/Guayaquil
 ```
 
 ## Estándares aplicados
